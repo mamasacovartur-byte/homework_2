@@ -206,62 +206,162 @@
 #
 # Создай по два объекта каждого класса и вызови метод describe().
 
-class Animal:
-    def __init__(self,name,age):
+class Water:
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability,):
         self.name = name
-        self.age =age
+        self.surname = surname
+        self.light = light
+        self.liter = liter
+        self.design = design
+        self.height = height
+        self.taste = taste
+        self.strength = strength
+        self.recyclability = recyclability
 
-    def describe(self):
-        describi = f'введите имя животног'
-        if self.name:
-            print(f'имя животного {self.name}')
+    def tool(self):
+        if self.strength:
+            print(f'Прочность бутылки:{self.strength} прошол')
         else:
-            print(f'нет таеого имени {self.name} ',f'{describi}' )
+            print(f'Прочность бутылки:{self.strength} не прошол ')
+            print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}')
 
-        if self.age:
-            print(f'возраст животного {self.age}')
-        else:
-            print(f'нет такого возраста {self.age}',f'{describi}')
+water_one =  Water('Артур','Мамасаков','белый','1л','черного цвета ','50см','','','')
+water_two =  Water('Антон','Павлович','черный','0.5л','белого цвета','25см','','','')
+water_free =  Water('Мирослав','Василевич','крсный','1.5л','ярко синего света','50см','','','')
+water_for =  Water('Темирлан','Токтрбеков','синий','2л','красного цекта','50см','','','')
+water_five =  Water('Бексултан','Турабалдиев','розовый','5л','красного цвета','53см','','','')
+water_sics =  Water('Нурдин','Калыков','','зеленый','3л','синего цвета','50см','','')
 
-animal_one = Animal('Жираф','8')
+water_one.tool()
+water_two.tool()
+water_free.tool()
+water_for.tool()
+water_five.tool()
+water_sics.tool()
+class Kola(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability, temperature):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.temperature = temperature
 
-animal_one.describe()
-class Dog(Animal):
-    def __init__(self, name, age, breed):
-        super().__init__(name, age)
-        self.breed = breed
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'температура сока {self.temperature}')
 
-    def describe(self):
-        print(f'gaf gaf {self.age}',f'my name {self.name}',f'я из породы {self.breed}')
+kola_one = Kola('','','','','','','','','','')
+kola_one.tool()
 
-dog_one =Dog('Шарик','4','немецкая авчарка')
+class Fanta(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability,gas):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.gas = gas
 
-dog_one.describe()
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'газированная {self.gas}')
 
-class Cat(Animal):
-    def __init__(self, name ,age, color):
-        super().__init__(name, age)
-        self.color =color
+fanta_one = Fanta('Бека','Кылдыбеков','черный','10','красный','56','сладкий','100','100','нет')
+fanta_one.tool()
+class Sprit(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability, hot):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.hot = hot
 
-    def describe(self):
-        print(f'меня зовут {self.name}',f'мне {self.age} лет',f'цвет моей шерсти {self.color}')
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'горячий сок {self.hot}')
 
-cat_one =Cat('Муся','3','blak')
-cat_two =Cat('Коржик','5','red')
+sprit_one = Sprit('Акмат','Бегалы','green','1.0','чёрный','23','слаткий','100','100','да')
+sprit_one.tool()
 
-cat_one.describe()
-cat_two.describe()
+class Pepsi(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability, color):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.color = color
 
-class Gorilla(Animal):
-    def __init__(self, name, age , weight):
-        super().__init__( name, age)
-        self.weight =weight
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'свет сока {self.color}')
 
-    def describe(self):
-        print(f'моё имя {self.name} тебя не касается', f'мой возраст {self.age}',f'вес имею {self.weight}')
+pepsi_one = Pepsi('Фатих','Малиев','чёрный','1','красный','53','горький','100','100','blec')
+pepsi_one.tool()
 
-gorilla_one = Gorilla('Титан','23','350')
-gorilla_two = Gorilla('Виктор','44','459')
+class Ava(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability, hot):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.hot = hot
 
-gorilla_one.describe()
-gorilla_two.describe()
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'горячий сок {self.hot}')
+
+ava_one = Ava('Фатих','Малиев','чёрный','1','красный','53','горький','100','100','да')
+ava_one.tool()
+
+class Peko(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability,hot):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.hot = hot
+
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'горячий сок {self.hot}')
+
+peko_one = Peko('Фатих','Малиев','чёрный','1','красный','53','горький','100','100','да')
+peko_one.tool()
+
+class Pekoblek(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability,hot):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.hot = hot
+
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'горячий сок {self.hot}')
+
+pekoblek_one = Pekoblek('Фатих','Малиев','чёрный','1','красный','53','горький','100','100','да')
+pekoblek_one.tool()
+
+class JalalAbad(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability,hot):
+        super().__init__(name, surname,light, liter, design, height, taste, strength, recyclability)
+        self.hot = hot
+
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'горячий сок {self.hot}')
+
+jalalAbad_one = JalalAbad('Фатих','Малиев','чёрный','1','красный','53','горький','100','100','да')
+jalalAbad_one.tool()
+
+class Niktare(Water):
+    def __init__(self,name,surname, light, liter, design, height, taste, strength, recyclability, hot):
+        super().__init__(name,surname,light, liter, design, height, taste, strength, recyclability)
+        self.hot = hot
+
+    def tool(self):
+        print(f'Данные о воде::',f'Имя тестировщика:{self.name}',f'Фамилия тестировщика:{self.surname}',
+                  f'Свет воды:{self.light}',f'Объём воды:{self.liter}',f'Дизайин бутлки:{self.design}',
+                  f'Высота бутылки:{self.height}',f'Вкус напитка:{self.taste}',f'Прочность бутылки:{self.strength}',
+                  f'Переробатываемость:{self.recyclability}',f'{self.strength}' f'горячий сок {self.hot}')
+
+niktare_one = Niktare('Фатих','Малиев','чёрный','1','красный','53','горький','100','100','да')
+niktare_one.tool()
