@@ -247,19 +247,102 @@
 #
 #
 # должен пройти по MRO и вывести сообщения каждого класса.
-class Notifier:
-    def send(self):
-        print(' Notifier')
-        super().send()
-class EmailNotifier(Notifier):
-    def send(self):
-        print('EmailNotifier')
-        super().send()
-class SMSNNotifier(Notifier):
-    def send(self):
-        print('SMSNNotifier')
-        super().send
-class MultiNotifier(EmailNotifier,SMSNNotifier):
-    def send(self):
-        print('MultiNotifier')
-        super
+# class Notifier:
+#     def send(self):
+#         print(' Notifier')
+#         super().send()
+# class EmailNotifier(Notifier):
+#     def send(self):
+#         print('EmailNotifier')
+#         super().send()
+# class SMSNNotifier(Notifier):
+#     def send(self):
+#         print('SMSNNotifier')
+#         super().send
+# class MultiNotifier(EmailNotifier,SMSNNotifier):
+#     def send(self):
+#         print('MultiNotifier')
+#         super().send()
+#
+# multiNotifier_one =MultiNotifier()
+# multiNotifier_one.send()
+   # Ветка: hw6_5
+#
+# Классы:
+#
+# Transport — (move())
+#
+# LandTransport — наследуется от Transport
+#
+# WaterTransport — наследуется от Transport
+#
+# Amphibian — наследуется от LandTransport и WaterTransport
+#
+# Требование:
+# Amphibian().move()
+#
+#
+# вызывает move() всех классов по MRO.
+#
+# 💡 Общая подсказка для всех задач:
+# print(ClassName.mro())
+# class Transport:
+#     def move(self):
+#         print('Транспорт движется куда-то')
+# class LandTransport(Transport):
+#     def move(self):
+#         super().move()
+#         print('Надземный транспорт')
+# class WaterTransport(Transport):
+#     def move(self):
+#         super().move()
+#         print('Водный транспорт')
+# class Amphibian(LandTransport,WaterTransport):
+#     def move(self):
+#         super().move()
+#         print('Плавает и едит')
+
+# amphibian_one =Amphibian()
+# print(Amphibian.mro())
+# amphibian_one.move()
+   # Ветка: hw6_4
+#
+# Классы:
+#
+# Logger — (log())
+#
+# FileLogger — наследуется от Logger
+#
+# ConsoleLogger — наследуется от Logger
+#
+# AppLogger — наследуется от FileLogger и ConsoleLogger
+#
+# Требование:
+#
+# Метод log() должен выводить информацию о порядке вызовов по MRO.
+# class Logger:
+#     def Log(self):
+#         print('log')
+# class FileLogger(Logger):
+#     def Log(self):
+#         print('filelog')
+#         super().Log()
+# class ConsoleLogger(Logger):
+#     def Log(self):
+#         print('consolelog')
+#         super().Log()
+# class AppLogger(FileLogger,Logger):
+#     def Log(self):
+#         print('applogger')
+#         super().Log()
+# appLogger_one =AppLogger()
+# appLogger_one.Log()
+# print(AppLogger.mro())
+from blessed import Terminal
+
+terminal = Terminal()
+
+name ={'капуста': terminal.red}
+
+for name, color in name.items():
+    print(color + name + terminal.normal)

@@ -13,21 +13,33 @@
 class Vehicle:
     def start(self):
         print('Vehicle starting')
+
+
 class Car(Vehicle):
     def start(self):
         super().start()
         print('Car starting')
+
     pass
+
+
 class ElectricCar(Vehicle):
     def __str__(self):
         super().__str__()
         print('ElectricCar starting')
+
     pass
+
+
 class Tesla(Car, ElectricCar):
     def start(self):
         super().start()
         print('Tesla redy')
+
     pass
+
+
 print(Tesla.mro())
-car_one =Tesla()
+car_one = Tesla()
 car_one.start()
+#ctrl+ alt +l = правильно выстовляет

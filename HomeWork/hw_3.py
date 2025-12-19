@@ -31,11 +31,11 @@ class Person:
         print(f"Меня зовут {self.name}", f"я родился {self.birth_date}",f"по профессии {self.occupation} , имею {self.education}")
 
 
-person_one = Person('Талант','23.06.1988','полицейский','среднее')
-person_two = Person('Руслан','12.01.1999','сварщик','высшее')
+person_1 = Person('Талант','23.06.1988','полицейский','среднее')
+person_2 = Person('Руслан','12.01.1999','сварщик','высшее')
 
-person_one.interesting()
-person_two.interesting()
+person_1.interesting()
+person_2.interesting()
 class Classmate(Person):
     def __init__(self, name, birth_date, occupation, higher_education, group_name):
         super().__init__(name, birth_date, occupation, higher_education)
