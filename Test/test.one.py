@@ -338,11 +338,116 @@
 # appLogger_one =AppLogger()
 # appLogger_one.Log()
 # print(AppLogger.mro())
-from blessed import Terminal
+# from blessed import Terminal
+#
+# terminal = Terminal()
+#
+# name ={'капуста': terminal.red}
+#
+# for name, color in name.items():
+#     print(color + name + terminal.normal)
+# import sqlite3
+#
+#
+# def create_table(connection):
+#     connection.execute('DROP TABLE IF EXISTS users')
+#     connection.execute("""
+#     CREATE TABLE users(
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         name TEXT,
+#         surname TEXT,
+#         age INTEGER,
+#         floor INTEGER,
+#         password INTEGER,
+#         gpa REAL,
+#         foto BLOB,
+#         point INTEGER
+#     )
+#     """)
+#     connection.commit()
+# def marc(connection, name, surname, age, floor, password, gpa, foto, point):
+#     cursor = connection.cursor()
+#     cursor.execute(
+#         "INSERT INTO users (name, surname, age, floor, password, gpa, foto, point) VALUES (?,?,?,?,?,?,?,?)",
+#         (name, surname, age, floor, password, gpa, foto, point)
+#     )
+#     connection.commit()
+#
+# def create_mace_table(conn):
+#     conn.execute("""
+#     CREATE TABLE IF NOT EXISTS marks(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     users_id INTEGER,
+#     subject TEXT,
+#     mark INTEGER
+#     )
+#     """)
+#     conn.commit()
+#
+# if __name__ == '__main__':
+#     conn = sqlite3.connect('database.db')
+#
+#     create_table(conn)
+#     marc(conn, 'Artur','Mamasakov',17,5,1234,4.4,"i'have",0)
+#
+#     create_mace_table(conn)
+#     marc('','','','','','','','','')
+#     conn.close()
+import sqlite3
 
-terminal = Terminal()
+def create_table(conn):
+    conn.execute('DROP TABLE IF EXISTS users')
+    conn.execute("""
+    CREATE TABLE users(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        surname TEXT,
+        age INTEGER,
+        floor INTEGER,
+        password INTEGER,
+        gpa REAL,
+        foto BLOB,
+        point INTEGER
+    )
+    """)
+    conn.commit()
 
-name ={'капуста': terminal.red}
+def add_user(conn, name, surname, age, floor, password, gpa, foto, point):
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO users (name, surname, age, floor, password, gpa, foto, point) VALUES (?,?,?,?,?,?,?,?)",
+        (name, surname, age, floor, password, gpa, foto, point)
+    )
+    conn.commit()
+    return cursor.lastrowid
 
-for name, color in name.items():
-    print(color + name + terminal.normal)
+def create_marks_table(conn):
+    conn.execute("""
+    CREATE TABLE IF NOT EXISTS marks(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        users_id INTEGER,
+        subject TEXT,
+        mark INTEGER,
+        FOREIGN KEY(users_id) REFERENCES users(id)
+    )
+    """)
+    conn.commit()
+
+def add_mark(conn, user_id, subject, mark):
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO marks (users_id, subject, mark) VALUES (?,?,?)",
+        (user_id, subject, mark)
+    )
+    conn.commit()
+
+if __name__ == '__main__':
+    conn = sqlite3.connect('database.db')
+
+    create_table(conn)
+    create_marks_table(conn)
+
+    user_id = add_user(conn, 'Artur', 'Mamasakov', 17, 5, 1234, 4.4, "i'have", 0)
+    add_mark(conn, user_id,'Math', 4)
+
+    conn.close()
